@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const PhoneImage = () => {
+  // 이미지를 URL 로 불러오기 위해서 바벨을 설정해야 하는이유
+  // TIMER 함수에서 저 값을 왜 저렇게 쓴거에요?
+  // lazy 로딩때문에 이미지를 못불러온다!
   const images = [
     "https://img.appstory.co.kr/@files/monthly.appstory.co.kr/thum/Bdatafile/Board/dir_100/10045.jpg?v=1505277932",
     "https://i.ytimg.com/vi/XtamHkfkKZ0/maxresdefault.jpg",

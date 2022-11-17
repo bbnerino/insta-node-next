@@ -85,7 +85,6 @@ const LoginBottom = styled.article`
     .facebook {
       color: #1d4faa;
       font-weight: 700;
-      cursor: pointer;
     }
     div {
       padding: 0.3rem;

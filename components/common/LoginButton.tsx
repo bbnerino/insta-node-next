@@ -15,6 +15,5 @@ const Wrapper = styled.button`
   font-weight: 600;
   color: #fff;
   padding-left: 0.3rem;
-  cursor: pointer;
 `;
 export default LoginButton;

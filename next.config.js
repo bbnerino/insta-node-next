@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images:{domains: ['localhost','www.instagram.com' ]}
+  images:{domains: ['localhost','www.instagram.com',"*" ]}
 }
 
 module.exports = nextConfig
