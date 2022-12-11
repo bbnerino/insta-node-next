@@ -27,7 +27,7 @@ const LoginBox = () => {
         type="password"
         placeholder="비밀번호"
       />
-      <LoginButton />
+      <LoginButton>Login</LoginButton>
       <LoginBottom>
         <div className="or_box">
           <div className="line" />

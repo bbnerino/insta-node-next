@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LoginBox from "../components/login/LoginBox";
 import PhoneImage from "../components/login/PhoneImage";
-import SignUpBox from "../components/login/SignUpBox";
+import SignUpOrLogin from "../components/login/signup-or-login";
 
 const index = () => {
   return (
@@ -10,7 +10,7 @@ const index = () => {
       <PhoneImage />
       <div>
         <LoginBox />
-        <SignUpBox />
+        <SignUpOrLogin type="signup" />
       </div>
     </Wrapper>
   );

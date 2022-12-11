@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginButton = () => {
-  return <Wrapper>로그인</Wrapper>;
+interface Props {
+  onClick: () => void;
+  children: string;
+}
+
+const LoginButton = ({ children, onClick }: Props) => {
+  return <Wrapper onClick={() => onClick()}>{children}</Wrapper>;
 };
 const Wrapper = styled.button`
   background-color: #0095f6;
