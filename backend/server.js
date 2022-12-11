@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 const cors = require("cors");
 const userRoutes = require('./app/routes/user');
 const mongoose = require("mongoose")
-
+require("dotenv").config({path:"variable.env"})
 // express app 생성
 const app = express()
 
@@ -13,14 +13,6 @@ app.use(bodyParser.json()); // application/json
 // database with mongodb 
 
  
-mongoose
-  .connect(
-    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/messages?retryWrites=true'
-  )
-  .then(result => {
-    app.listen(8080);
-  })
-  .catch(err => console.log(err));
 
 // ######################################
 app.use(cors());
@@ -32,15 +24,7 @@ const options = {
 };
 app.use(cors(options));
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
-  );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+
 
 app.get('/',(req,res)=>{
   res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
@@ -48,6 +32,16 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userRoutes) 
 
-app.listen(8080,()=>{
-  console.log("서버연결되었습니다.")
-})
+
+
+mongoose.set("strictQuery",false)
+
+mongoose
+  .connect(
+    process.env.MONGODB_URL,
+    {useNewUrlParser:true}
+  )
+  .then(result => {
+    app.listen(8080);
+  })
+  .catch(err => console.log(err));
