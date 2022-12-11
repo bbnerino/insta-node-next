@@ -1,3 +1,4 @@
+import { apiClient } from "../helper/axios"
 
 
 const URL = "http://localhost:8080"
@@ -14,13 +15,10 @@ export class SignUp {
     this.form = form
   }
 
-  postSignUp = async()=>{
-    // console.log('hi')
-    const response =  await
-    fetch(`${URL}/signup`,{method:"POST",body:JSON.stringify(this.form)})
-    .then((res)=>res.json())
-    .then((data)=>data)
-    .catch((err)=>{return{message:"실패!"}})
-    return (response)
+  postSignUp = async()=>{ 
+    const response = await apiClient.post<any>(
+      `${URL}/user/signup`,{data:this.form}
+    )
+    return response.data
   }
 }

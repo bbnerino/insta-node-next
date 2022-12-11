@@ -9,7 +9,7 @@ const SignUpPage = () => {
   const onSubmit = () => {
     new SignUp(form)
       .postSignUp()
-      .then((res) => console.log(res))
+      .then((res) => console.log(res.message))
       .catch((err) => console.error(err));
   };
   return (
