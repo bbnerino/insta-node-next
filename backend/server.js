@@ -2,19 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 const cors = require("cors");
 const userRoutes = require('./app/routes/user');
+const articleRoutes = require('./app/routes/article');
 const mongoose = require("mongoose")
 require("dotenv").config({path:"variable.env"})
 // express app 생성
 const app = express()
 
 // bodyParser 사용
-app.use(bodyParser.json()); // application/json
-
-// database with mongodb 
-
- 
-
-// ######################################
+app.use(bodyParser.json()); 
 app.use(cors());
 
 const options = {
@@ -24,15 +19,12 @@ const options = {
 };
 app.use(cors(options));
 
-
-
 app.get('/',(req,res)=>{
   res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 })
 
 app.use('/user',userRoutes) 
-
-
+app.use('/article',articleRoutes)
 
 mongoose.set("strictQuery",false)
 

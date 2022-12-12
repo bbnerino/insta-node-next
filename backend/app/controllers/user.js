@@ -21,9 +21,7 @@ exports.update = (req, res) => {
   const { name, id, password } = req.body.data;
   User.findOne({ userId: req.params.userId }, (err, user) => {
     if (err) {
-      () => {
-        res.status(500).send({ message: "정보가 없습니다." });
-      };
+      res.status(500).send({ message: "정보가 없습니다." });
     } else {
       user.id = id;
       user.name = name;
