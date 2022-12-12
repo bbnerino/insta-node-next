@@ -16,4 +16,14 @@ exports.create = (req, res) => {
     }
   });
 };
-
+exports.getAll = (req, res) => {
+  console.log(req);
+  Article.find((err, data) => {
+    if (err) {
+      res.status(500).send({ message: "정보가 없습니다." });
+    } else {
+      console.log(data);
+      res.send({ articles: data });
+    }
+  });
+};

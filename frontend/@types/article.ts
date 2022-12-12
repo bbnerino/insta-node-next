@@ -14,7 +14,7 @@ export class Article {
     return response.data;
   };
 
-  getAll = async () => {
+  static getAll = async () => {
     const response = await apiClient.get<any>(`${URL}/article/all`);
     return response.data;
   };
