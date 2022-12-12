@@ -15,7 +15,8 @@ const LoginBox = () => {
     loginForm
       .login()
       .then((res) => {
-        console.log(res);
+        console.log(res.userGuid);
+        sessionStorage.setItem("token", res.userGuid);
       })
       .catch((err) => {
         console.error(err);
