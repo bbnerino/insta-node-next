@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { User } from "../../@types/signup";
@@ -7,6 +8,7 @@ import LoginButton from "../common/LoginButton";
 const LoginBox = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const router = useRouter();
 
   const postLogin = () => {
     const loginForm = new User();
@@ -17,6 +19,7 @@ const LoginBox = () => {
       .then((res) => {
         console.log(res.userGuid);
         sessionStorage.setItem("token", res.userGuid);
+        router.push("/main");
       })
       .catch((err) => {
         console.error(err);

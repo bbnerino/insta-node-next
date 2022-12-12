@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { User } from "../@types/signup";
@@ -6,10 +7,14 @@ import SignUpOrLogin from "../components/login/signup-or-login";
 
 const SignUpPage = () => {
   const [form, setForm] = useState({});
+  const router = useRouter();
   const onSubmit = () => {
     new User(form)
       .postSignUp()
-      .then((res) => console.log(res.message))
+      .then((res) => {
+        alert(res.message);
+        router.push("/");
+      })
       .catch((err) => console.error(err));
   };
   return (
