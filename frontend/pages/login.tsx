@@ -1,10 +1,19 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import LoginBox from "../components/login/LoginBox";
 import PhoneImage from "../components/login/PhoneImage";
 import SignUpOrLogin from "../components/login/signup-or-login";
+import { getToken } from "../helper/axios";
 
 const index = () => {
+  const token = getToken();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    token && router.push("/main");
+  }, []);
   return (
     <Wrapper>
       <PhoneImage />

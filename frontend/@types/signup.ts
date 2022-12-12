@@ -1,6 +1,5 @@
-import { apiClient } from "../helper/axios";
+import { apiClient, URL } from "../helper/axios";
 
-const URL = "http://localhost:8080";
 
 interface SignupForm {
   name?: string;
