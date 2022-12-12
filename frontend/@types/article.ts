@@ -5,6 +5,7 @@ export class Article {
   content?: string;
   // image?:string
   userGuid?: string;
+  userName?:string
   _id?: string;
 
   create = async () => {

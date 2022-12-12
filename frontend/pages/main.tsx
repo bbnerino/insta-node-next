@@ -10,14 +10,14 @@ const main = ({ articles }: any) => {
       <p>main..</p>
       <Link href="/article/create">CREATE</Link>
       {articles.map((article: any) => (
-        <div key={article._id}>
-          <div>{article.title}</div>
-          <div>{article.content}</div>
-          <div>{article.userGuid}</div>
-          <div>{article._id}</div>
-        </div>
+        // <div key={article._id}>
+        //   <div>{article.title}</div>
+        //   <div>{article.content}</div>
+        //   <div>{article.userGuid}</div>
+        //   <div>{article._id}</div>
+        // </div>
+        <Card key={article._id} article={article} />
       ))}
-      {/* <Card /> */}
     </div>
   );
 };

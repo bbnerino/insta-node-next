@@ -1,12 +1,18 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
+import { Article } from "../../../@types/article";
 import CardInfoBox from "./CardInfo";
 import CardLike from "./CardLike";
 import CardTitle from "./CardTitle";
 import Comments from "./Comments";
 import UserInfoBox from "./UserInfoBox";
-const Card = () => {
+
+interface Props {
+  article: Article;
+}
+
+const Card = ({ article }: Props) => {
   return (
     <Wrapper>
       <UserInfoBox />
@@ -19,7 +25,7 @@ const Card = () => {
       />
       <CardInfoBox />
       <CardLike />
-      <CardTitle />
+      <CardTitle article={article} />
       <Comments />
     </Wrapper>
   );
