@@ -1,24 +1,36 @@
-import { apiClient } from "../helper/axios"
+import { apiClient } from "../helper/axios";
 
+const URL = "http://localhost:8080";
 
-const URL = "http://localhost:8080"
-
-interface SignupForm{
-  name? : string
-  id?:string
-  password?:string
+interface SignupForm {
+  name?: string;
+  id?: string;
+  password?: string;
 }
 
-export class SignUp {
-  form : SignupForm
-  constructor(form:SignupForm){
-    this.form = form
+export class User {
+  signupForm?: SignupForm;
+  name?: string;
+  id?: string;
+  password?: string;
+  _id?: string;
+  imgUrl?: string;
+
+  constructor(form?: SignupForm) {
+    this.signupForm = form;
   }
 
-  postSignUp = async()=>{ 
-    const response = await apiClient.post<any>(
-      `${URL}/user/signup`,{data:this.form}
-    )
-    return response.data
-  }
+  postSignUp = async () => {
+    const response = await apiClient.post<any>(`${URL}/user/signup`, {
+      data: this.signupForm,
+    });
+    return response.data;
+  };
+
+  login = async () => {
+    const response = await apiClient.post<any>(`${URL}/user/login`, {
+      data: this,
+    });
+    return response.data;
+  };
 }

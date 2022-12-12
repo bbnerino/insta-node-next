@@ -1,11 +1,27 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { User } from "../../@types/signup";
 import LoginButton from "../common/LoginButton";
 
 const LoginBox = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+
+  const postLogin = () => {
+    const loginForm = new User();
+    loginForm.id = id;
+    loginForm.password = pw;
+    loginForm
+      .login()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <Wrapper>
       <Image
@@ -27,7 +43,7 @@ const LoginBox = () => {
         type="password"
         placeholder="비밀번호"
       />
-      <LoginButton>Login</LoginButton>
+      <LoginButton onClick={() => postLogin()}>Login</LoginButton>
       <LoginBottom>
         <div className="or_box">
           <div className="line" />

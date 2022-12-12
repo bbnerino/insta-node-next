@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { SignUp } from "../@types/signup";
+import { User } from "../@types/signup";
 import LoginButton from "../components/common/LoginButton";
 import SignUpOrLogin from "../components/login/signup-or-login";
 
 const SignUpPage = () => {
   const [form, setForm] = useState({});
   const onSubmit = () => {
-    new SignUp(form)
+    new User(form)
       .postSignUp()
       .then((res) => console.log(res.message))
       .catch((err) => console.error(err));
